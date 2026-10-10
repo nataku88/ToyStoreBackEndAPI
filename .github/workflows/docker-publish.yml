@@ -31,4 +31,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/store-api:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/store-api:latest
