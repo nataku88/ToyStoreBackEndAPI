@@ -15,6 +15,7 @@ namespace Store_API.Controllers
             _config = configuration;
         }
 
+        //Adding note
         [HttpPost]
         [Route("RegisterUser")]
 
