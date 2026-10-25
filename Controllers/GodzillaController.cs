@@ -18,7 +18,7 @@ namespace Store_API.Controllers
         [HttpGet]
         [Route("GetGodzilla")]
 
-        //Adding quick note
+        //Adding quick note here too
         public JsonResult GetGodzilla()
         {
             string query = "Select ProductID,ProductName, Price,In_Stock,Pictures" +
