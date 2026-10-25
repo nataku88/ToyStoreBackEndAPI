@@ -1,0 +1,32 @@
+name: Deploy Backend to Ubuntu
+
+on:
+  workflow_run:
+    workflows:
+      - "Build and Push .NET API to Docker Hub"
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull latest API image
+        run: docker pull vandread44/store-api:latest
+
+      - name: Remove old API container if it exists
+        run: |
+          docker stop store-api || true
+          docker rm store-api || true
+
+      - name: Start updated API container
+        run: |
+          docker run -d \
+            --restart unless-stopped \
+            --name store-api \
+            -p 3000:80 \
+            vandread44/store-api:latest
