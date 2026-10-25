@@ -28,5 +28,5 @@ jobs:
           docker run -d \
             --restart unless-stopped \
             --name store-api \
-            -p 3000:80 \
+            -p 3000:8080 \
             vandread44/store-api:latest
