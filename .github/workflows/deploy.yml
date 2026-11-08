@@ -24,9 +24,12 @@ jobs:
           docker rm store-api || true
 
       - name: Start updated API container
+        env:
+          STORE_DB_CONNECTION: ${{ secrets.STORE_DB_CONNECTION }}
         run: |
           docker run -d \
             --restart unless-stopped \
             --name store-api \
             -p 3000:8080 \
+            -e ConnectionStrings__products="$STORE_DB_CONNECTION" \
             vandread44/store-api:latest
