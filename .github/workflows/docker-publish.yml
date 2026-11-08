@@ -32,3 +32,4 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/store-api:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/store-api:${{ github.sha }}
