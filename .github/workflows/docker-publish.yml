@@ -31,6 +31,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: 
+          #This is for versions for rollbacks
+          tags: |
             ${{ secrets.DOCKER_USERNAME }}/store-api:latest
             ${{ secrets.DOCKER_USERNAME }}/store-api:${{ github.sha }}
